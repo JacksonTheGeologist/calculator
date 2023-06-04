@@ -1,0 +1,99 @@
+/* ********
+ROOT
+ ******** */
+:root {
+  --main-font: sans-serif;
+  --main-font-color: #333;
+  --pink: #ee2a7b;
+  --blue: #0099cd;
+}
+
+/* ********
+HTML TEMPLATE ITEMS
+ ******** */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--main-font);
+  line-height: 1;
+  font-weight: 400;
+  color: var(--pink);
+  overflow-x: hidden;
+  font-size: 3.6rem;
+}
+
+/* ********
+GRID TEMPLATES
+ ******** */
+/* USE THIS .grid class for anything you want to be a grid */
+.grid {
+  display: grid;
+}
+
+.grid--2-columns {
+  grid-template-columns: 1fr 1fr;
+}
+.grid--3-columns {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.grid--4-columns {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.grid--center {
+  justify-content: center;
+}
+
+/* CALCULATOR */
+.calculator {
+  margin-top: 8rem;
+  font-size: 3.6rem;
+}
+/* CALCULATOR DISPLAY */
+.display {
+  text-align: right;
+  margin-bottom: 4rem;
+  font-size: 4.8rem;
+  font-weight: 600;
+  border: 3px solid var(--blue);
+  border-radius: 10px;
+  height: 10rem;
+  line-height: 10rem;
+}
+
+.display p {
+  padding-right: 1rem;
+}
+/* CALCULATOR BUTTONS */
+.buttons {
+  gap: 2.4rem;
+}
+.button,
+.button:active {
+  border: 1px solid var(--pink);
+  text-align: center;
+  height: 10rem;
+  /* line-height: 10rem; */
+  width: 10rem;
+  border-radius: 20px;
+  display: grid;
+  align-items: center;
+}
+
+.button:hover {
+  background-color: var(--pink);
+  color: #eee;
+}
+.zero {
+  grid-column: 1 / 3;
+  width: 22.4rem;
+}
