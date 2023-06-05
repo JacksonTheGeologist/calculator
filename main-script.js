@@ -1,4 +1,4 @@
-const entries = [];
+let entries = [];
 const numbers = document.querySelectorAll(".number");
 const buttons = document.querySelectorAll(".button");
 const display = document.querySelector(".display");
@@ -11,18 +11,18 @@ function getInput(btn) {
   console.log();
   if (Number(btn.textContent)) {
     entry = entry + btn.textContent;
-    console.log(entry);
   } else if (btn.classList.contains("plus-minus") && negative === false) {
     entry = "-" + entry;
     negative = true;
   } else if (btn.classList.contains("plus-minus") && negative === true) {
     entry = entry.slice(1);
     negative = false;
-  } else if (btn.classList.contains("operator")) {
+  } else if (btn.classList.contains("operator") && entry.length > 0) {
     entries.push(Number(entry));
     entries.push(btn.textContent);
     entry = "";
     doMath(entries);
+    // console.log(entries);
   } else if (btn.classList.contains("clear")) {
     entries = [];
   }
@@ -31,7 +31,20 @@ function getInput(btn) {
 }
 
 function doMath(arr) {
-  console.log(arr);
+  let curVal;
+  let prevVal;
+  arr.forEach((entry, index) => {
+    if (index === 0) {
+      curVal = entry;
+    } else if (
+      entry === "&#247" ||
+      entry === "+" ||
+      entry === "-" ||
+      entry === "X"
+    ) {
+      prevVal = curVal;
+    }
+  });
 }
 
 // Take user inputs
