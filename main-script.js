@@ -79,6 +79,3 @@ function doMath(operator, var1, var2) {
       return var1;
   }
 }
-
-// Take user inputs
-// Display results
