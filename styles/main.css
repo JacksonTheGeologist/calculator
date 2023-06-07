@@ -68,11 +68,9 @@ GRID TEMPLATES
   border-radius: 10px;
   height: 10rem;
   line-height: 10rem;
+  padding-right: 1.2rem;
 }
 
-.display p {
-  padding-right: 1rem;
-}
 /* CALCULATOR BUTTONS */
 .buttons {
   gap: 2.4rem;
@@ -93,7 +91,8 @@ GRID TEMPLATES
   background-color: var(--pink);
   color: #eee;
 }
-.zero {
+.zero,
+.zero:hover {
   grid-column: 1 / 3;
   width: 22.4rem;
 }
