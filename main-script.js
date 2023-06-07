@@ -39,7 +39,7 @@ function getInput(btn) {
     display.textContent = 0;
   }
 }
-const divide = "&#247";
+const divide = "/";
 operators = ["X", divide, "+", "-"];
 function getCurVal(arr) {
   let curVal;
@@ -64,10 +64,12 @@ function getCurVal(arr) {
   return curVal;
 }
 function doMath(operator, var1, var2) {
+  console.log("doMath operator", operator);
   switch (operator) {
     case "X":
       return var1 * var2;
-    case divide:
+    case "/":
+      console.log("divide?");
       return var1 / var2;
     case "+":
       return var1 + var2;
