@@ -4,6 +4,7 @@ const buttons = document.querySelectorAll(".button");
 const display = document.querySelector(".display");
 let entry = "";
 let negative = false;
+let val;
 
 buttons.forEach((btn) => btn.addEventListener("click", () => getInput(btn)));
 
@@ -12,75 +13,55 @@ function getInput(btn) {
   if (btn.textContent === ".") {
     if (entry.includes(".") === false) {
       entry = entry + btn.textContent;
+      display.textContent = entry;
     }
   } else if (Number(btn.textContent)) {
     entry = entry + btn.textContent;
+    display.textContent = entry;
   } else if (btn.classList.contains("plus-minus") && negative === false) {
     entry = "-" + entry;
     negative = true;
+    display.textContent = entry;
   } else if (btn.classList.contains("plus-minus") && negative === true) {
     entry = entry.slice(1);
     negative = false;
-  } else if (btn.classList.contains("operator") && entry.length > 0) {
+    display.textContent = entry;
+  } else if (btn.classList.contains("operator")) {
     entries.push(Number(entry));
     entries.push(btn.textContent);
     entry = "";
-    getCurVal(entries);
-    // console.log(entries);
+    val = getCurVal(entries);
+    display.textContent = val;
   } else if (btn.classList.contains("clear")) {
+    console.log("cleared");
     entries = [];
-  }
-  doMath;
 
-  display.textContent = entry;
+    display.textContent = 0;
+  }
 }
 const divide = "&#247";
+operators = ["X", divide, "+", "-"];
 function getCurVal(arr) {
-  console.log("h");
   let curVal;
   let preVal;
-
-  console.log(entries);
+  let testVal;
   arr.forEach((entry, index) => {
-    //4 conditions right?
-    //First number --> display after pushing the operator
-    //
-
-    //Make this another function at some point
-
+    console.log(arr);
+    console.log("Start for Each, curval", curVal, "entry: ", entry);
     if (index === 0) {
       curVal = entry;
-    } else if (index === 1) {
-      display.textContent = curVal;
-
-      //ends logic function
-    } else if (index === arr.length - 1) {
-      display.textContent = curVal;
-      //finishes the math!
-    } else if (entry === "X") {
+    } else if (index < 2) {
+      console.log("moving along");
+    } else if (!isNaN(entry)) {
       preVal = curVal;
-      curVal = entry;
-      doMath("X", preVal, curVal);
-    } else if (entry === divide) {
-      preVal = curVal;
-      curVal = doMath("/", preVal, curVal);
-    } else if (entry === "+") {
-      operator = "+";
-      preVal = curVal;
-      curVal = doMath("+", preVal, curVal);
-    } else if (entry === "-") {
-      operator = "+";
-      preVal = curVal;
-      curVal = doMath("+", preVal, curVal);
-    } else if (entry === "=") {
-      let val = doMath("=", preVal, curVal);
-      //set display
-      display.textcontent = val;
-      //clear array
-      //set array = [curVal]
-      //math stuff}
+    } else {
+      testVal = doMath(arr[index - 2], preVal, arr[index - 1]);
+      curVal = testVal;
+      console.log(curVal, "After math");
+      console.log("testVal: ", testVal);
     }
   });
+  return curVal;
 }
 function doMath(operator, var1, var2) {
   switch (operator) {
@@ -99,8 +80,5 @@ function doMath(operator, var1, var2) {
   }
 }
 
-let testMath = doMath("+", 100, 10);
-console.log(testMath);
 // Take user inputs
 // Display results
-b;
