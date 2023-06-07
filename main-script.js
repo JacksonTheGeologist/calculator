@@ -9,7 +9,6 @@ let val;
 buttons.forEach((btn) => btn.addEventListener("click", () => getInput(btn)));
 
 function getInput(btn) {
-  console.log();
   if (btn.textContent === ".") {
     if (entry.includes(".") === false) {
       entry = entry + btn.textContent;
@@ -31,9 +30,10 @@ function getInput(btn) {
     entries.push(btn.textContent);
     entry = "";
     val = getCurVal(entries);
-    display.textContent = val;
+    display.textContent = repeatingDecimal(val);
   } else if (btn.classList.contains("clear")) {
-    console.log("cleared");
+    negative = false;
+    entry = "";
     entries = [];
 
     display.textContent = 0;
@@ -46,30 +46,23 @@ function getCurVal(arr) {
   let preVal;
   let testVal;
   arr.forEach((entry, index) => {
-    console.log(arr);
-    console.log("Start for Each, curval", curVal, "entry: ", entry);
     if (index === 0) {
       curVal = entry;
     } else if (index < 2) {
-      console.log("moving along");
     } else if (!isNaN(entry)) {
       preVal = curVal;
     } else {
       testVal = doMath(arr[index - 2], preVal, arr[index - 1]);
       curVal = testVal;
-      console.log(curVal, "After math");
-      console.log("testVal: ", testVal);
     }
   });
   return curVal;
 }
 function doMath(operator, var1, var2) {
-  console.log("doMath operator", operator);
   switch (operator) {
     case "X":
       return var1 * var2;
     case "/":
-      console.log("divide?");
       return var1 / var2;
     case "+":
       return var1 + var2;
@@ -81,3 +74,24 @@ function doMath(operator, var1, var2) {
       return var1;
   }
 }
+
+function repeatingDecimal(num) {
+  let charArr = String(num).split("");
+  let prev;
+  let valCount = 0;
+  charArr.forEach((char, i) => {
+    if (i === 0) {
+      prev = charArr[0];
+    } else {
+      valCount++;
+      prev = char;
+    }
+  });
+  if (valCount > 5) {
+    return num.toFixed(4);
+  } else {
+    return num;
+  }
+}
+
+const check = repeatingDecimal(4.313);
