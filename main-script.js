@@ -80,38 +80,4 @@ function doMath(operator, var1, var2) {
   }
 }
 
-// Take user inputs
-// Display results
-// arr.forEach((entry, index) => {
-//   if (index === 0) {
-//     curVal = entry;
-//     console.log("i0=: ", curVal);
-//   } else if (index === 1) {
-//     console.log("i=1: ", curVal);
-//   } else if (index === arr.length) {
-//     display.textContent = curVal;
-//     console.log("last item");
-//   } else if (entry === "X") {
-//     preVal = curVal;
-//     curVal = arr[index - 1];
-//     console.log("multiply: ", preVal, curVal);
-//     curVal = doMath("X", preVal, curVal);
-//     console.log(curVal);
-//   } else if (entry === divide) {
-//     preVal = curVal;
-//     curVal = arr[index - 1];
-//     curVal = doMath("/", preVal, curVal);
-//   } else if (entry === "+") {
-//     preVal = curVal;
-//     curVal = arr[index - 1];
-//     curVal = doMath("+", preVal, curVal);
-//   } else if (entry === "-") {
-//     preVal = curVal;
-//     curVal = arr[index - 1];
-//     curVal = doMath("+", preVal, curVal);
-//   } else if (entry === "=") {
-//     console.log(curVal, preVal);
-//   }
-// });
-// return curVal;
-// }
+/
